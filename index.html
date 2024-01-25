@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
+    <script src="./index.js"></script>
     <title>Calculator</title>
 </head>
 <body>
     <div id="container">
         <div id="screen">
+            <input type="text" id="info" value="0" placeholder="0">
         </div>
             <div id="numbers">
-                <button id="7">7</button>
-                <button id="8">8</button>
-                <button id="9">9</button>
-                <button id="d">/</button>
-                <button id="4">4</button>
-                <button id="5">5</button>
-                <button id="6">6</button>
-                <button id="m">X</button>
-                <button id="1">1</button>
-                <button id="2">2</button>
-                <button id="3">3</button>
-                <button id="s">-</button>
-                <button id="c">C</button>
-                <button id="0">0</button>
-                <button id="e">=</button>
-                <button id="p">+</button>
+                <button onclick="display(7)">7</button>
+                <button onclick="display(8)">8</button>
+                <button onclick="display(9)">9</button>
+                <button onclick="display('/')">/</button>
+                <button onclick="display(4)">4</button>
+                <button onclick="display(5)">5</button>
+                <button onclick="display(6)">6</button>
+                <button onclick="display('*')">X</button>
+                <button onclick="display(1)">1</button>
+                <button onclick="display(2)">2</button>
+                <button onclick="display(3)">3</button>
+                <button onclick="display(s)">-</button>
+                <button onclick="display(c)">C</button>
+                <button onclick="display(0)">0</button>
+                <button onclick="display('=')">=</button>
+                <button onclick="display('+')">+</button>
             </div>
 
 

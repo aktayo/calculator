@@ -9,13 +9,17 @@
     border-radius: 15px;
 
 }
-#screen{
+#screen #info{
     background-color: rgba(253, 252, 251, 0.911);
     height: 80px;
     width: 350px;
     margin: 8px;
     margin-top: 8px;
     border-radius: 5px;
+}
+#info{
+    font: 3em sans-serif;
+    text-align: right;
 }
 #numbers{
     display: grid;
