@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <title>Calculator</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="container">
-        <div id="screen">
-            <input type="text" id='disp' class="info" placeholder="0">
-            <input type="text" id='disp2' class="info" placeholder=" ">
-
-        </div> 
-            <div id="numbers">
-                <button type='button' class= 'bttn' data-val='7'>7</button>
-                <button type='button' class= 'bttn' data-val='8' >8</button>
-                <button type='button' class= 'bttn' data-val='9' >9</button>
-                <button type='button' class= 'bttn' data-val='/' >/</button>
-                <button type='button' class= 'bttn' data-val='4' >4</button>
-                <button type='button' class= 'bttn' data-val='5' >5</button>
-                <button type='button' class= 'bttn' data-val='6' >6</button>
-                <button type='button' class= 'bttn' data-val='x' >X</button>
-                <button type='button' class= 'bttn' data-val='1' >1</button>
-                <button type='button' class= 'bttn' data-val='2' >2</button>
-                <button type='button' class= 'bttn' data-val='3' >3</button>
-                <button type='button' class= 'bttn' data-val='-' >-</button>
-                <button type='button' class="clear" data-val='c' >C</button>
-                <button type='button' class= "bttn" data-val='0' >0</button>
-                <button type='button' class= "equal" data-val='=' >=</button>
-                <button type='button' class= 'bttn' data-val='+' >+</button>
-            </div>
-
-
+      <div id="screen">
+        <input type="text" id="disp" class="info" placeholder=" " />
+        <input type="text" id="disp2" class="info" placeholder=" " />
+      </div>
+      <button id = 'on'>ON </button>
+      <div id="numbers">
+        <button type="button" class="bttn nums" data-val="7">7</button>
+        <button type="button" class="bttn nums" data-val="8">8</button>
+        <button type="button" class="bttn nums" data-val="9">9</button>
+        <button type="button" class="bttn signs" data-val="/">/</button>
+        <button type="button" class="bttn nums" data-val="4">4</button>
+        <button type="button" class="bttn nums" data-val="5">5</button>
+        <button type="button" class="bttn nums" data-val="6">6</button>
+        <button type="button" class="bttn signs" data-val="x">X</button>
+        <button type="button" class="bttn nums" data-val="1">1</button>
+        <button type="button" class="bttn nums" data-val="2">2</button>
+        <button type="button" class="bttn nums" data-val="3">3</button>
+        <button type="button" class="bttn signs" data-val="-">-</button>
+        <button type="button" class="bttn clear" data-val=" ">C</button>
+        <button type="button" class="bttn nums" data-val='0'>0</button>
+        <button type="button" class="equal signs" data-val="=">=</button>
+        <button type="button" class="bttn signs" data-val="+">+</button>
+      </div>
     </div>
-</body>
-<script src="./index.js"></script>
+  </body>
+  <script src="./index.js"></script>
 </html>

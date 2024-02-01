@@ -3,16 +3,53 @@ let display2 = document.getElementById("disp2");
 let buttons = document.querySelectorAll(".bttn");
 let ans = document.querySelector(".equal");
 let clr = document.querySelector(".clear");
+let dispScreen = document.getElementById("screen");
+let off = document.getElementById("on");
+let state = "OFF";
+let disp1 = (disp2 = "");
+let calFlag = "no";
+let signFlag = "OFF";
+
+function onOff() {
+  if (state == "ON") {
+    off.innerText = "ON";
+    off.style.backgroundColor = "red";
+    display.style.backgroundColor = "rgba(119, 113, 108, 0.911)";
+    display2.style.backgroundColor = "rgba(119, 113, 108, 0.911)";
+    display.placeholder = "";
+    clear();
+    state = "OFF";
+  } else {
+    // off.style.backgroundColor='red';
+    off.innerText = "OFF";
+    off.style.backgroundColor = "brown";
+    display.style.backgroundColor = "aliceblue";
+    display2.style.backgroundColor = "aliceblue";
+    display.placeholder = "0";
+
+    state = "ON";
+  }
+}
+
+off.addEventListener("click", onOff);
+
 let signs = ["+", "-", "/", "x"];
 let num1 = "";
 let num2 = "";
 let operator = "";
 let result = "";
-let scrn = (i = op = scrn1 = symbol = "");
-const flag = Boolean(false);
+let i = (op = symbol = "");
+let flag = "NSET";
+let resFlag = "OFF";
+let opFlag = "OFF";
 function calculate() {
-  digit1 = parseInt(num1);
-  digit2 = parseInt(num2);
+  if (signFlag == "ON") {
+    num1 = disp1;
+    signFlag = "OFF";
+  }
+
+  digit1 = parseFloat(num1);
+  digit2 = parseFloat(num2);
   switch (operator) {
     case "+":
       result = digit1 + digit2;
@@ -28,54 +65,79 @@ function calculate() {
       break;
   }
   display2.value = result;
-  num1 = result;
+
+  disp1 = result;
+
+  //  console.log(num1+ operator+num2)
+  result = "";
 }
 
 buttons.forEach(function (buttn) {
   buttn.addEventListener("click", function (e) {
-    let value = e.target.dataset.val;
+    if (state == "ON") {
+      let value = e.target.dataset.val;
+      // loop through sign checked if sign is clicked
+      for (let i of signs) {
+        if (value == i && num1 != "") {
+          // check if calculate has bn called, raise sign flag
+          if (resFlag == "ON") {
+            signFlag = "ON";
+            num2 = "";
+          }
+          // to exit else if condition by changing flag value
+          flag = "NSET";
+          operator = i;
 
-    for (let i of signs) {
-      if (value == i && num1 != "") {
-        display.value += value;
-        symbol = i;
-
-        op = "done";
-        break;
+          break;
+        }
       }
-    }
+      if (operator == "") {
+        num1 += value;
+        display.value = num1;
 
-    if (op == "done" && num1 != "") {
-      operator = symbol;
-      op = "";
-    } else if (operator == "") {
-      display.value += value;
-      num1 = display.value;
-    } else if (operator != "") {
-      num2 += value;
-      display.value += num2;
-    }
-    if (operator != "" && num1 != "" && num2 != "") {
-      calculate();
-      num2 = "";
+        console.log(num1);
+      } else if (operator !== "" && num1 != "" && flag == "NSET") {
+        display.value += value;
+
+        // console.log('NO2A'+ num2);
+        flag = "SET";
+      } else {
+        num2 += value;
+        display.value += value;
+        calculate();
+        resFlag = "ON";
+        // console.log('NO3');
+      }
     }
   });
 });
+// reset all varaibles
 function clear() {
-  display.value = "";
-  display2.value = "";
-  operator = "";
-  result = "";
-  num1=num2='';
+  if (state == "ON") {
+    display.value = "";
+    display2.value = "";
+    operator = "";
+    result = "";
+    num1 = num2 = "";
+    value = "";
+    disp1 = "";
+    flag = "NSET";
+    resFlag = "OFF";
+    opFlag = "OFF";
+  }
 }
+// evaluate when equality is pressed
 function cal() {
-  if (num2 == "") {
-    display.value = result;
-    display2.value = "";
-  } else {
-    calculate();
-    display.value = result;
-    display2.value = "";
+  if (state == "ON") {
+    // check if 2nd num is assigned
+    if (num2 == "") {
+      display.value = disp1;
+      display2.value = "";
+    } else {
+      calculate();
+      display.value = disp1;
+      display2.value = "";
+    }
   }
 }
 clr.addEventListener("click", clear);

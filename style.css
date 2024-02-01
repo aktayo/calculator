@@ -10,7 +10,7 @@
 
 }
 #screen .info{
-    background-color: rgba(253, 252, 251, 0.911);
+    background-color: rgba(119, 113, 108, 0.911);
     
     width: 350px;
     margin: 0px;
@@ -30,11 +30,22 @@ margin-top: 15px;
     margin-top: 5em;
     height: 40px;
 }
+#disp:hover,#disp2:hover,#disp:focus,#disp2:focus{
+    border:0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 #disp2{
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     height: 30px;
     margin-top: 0px;
+}
+.clear, .signs{
+    background-color: rgb(126, 30, 30);
+}
+.nums{
+    background-color: rgb(103, 100, 105);
 }
 #numbers{
     display: grid;
@@ -44,14 +55,23 @@ margin-top: 15px;
     background-color: aliceblue;
     height: 360px;
     width: 350px;
-    margin-top: 2.5em;
+    margin-top: 1.5em;
     margin-left: 8px;
     border-radius: 4px;
     padding-top: 15px;
     padding-left: 5px;
 }
+#on{
+    margin-left: 310px;
+    margin-top: 15px;
+    background-color: red;
+    width: 50px;
+    height: 25px;
+    color: #fff;
+    border-radius: 4px;
+}
 #numbers > button{
-    background-color: rgb(126, 126, 216);
+    /* background-color: rgb(126, 126, 216); */
     text-align: center;
     padding-top: 10px;
     border-radius: 4px;
