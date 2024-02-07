@@ -9,6 +9,9 @@ let state = "OFF";
 let disp1 = (disp2 = "");
 let calFlag = "no";
 let signFlag = "OFF";
+let changeSign = "";
+let newSign = "";
+let changeSign1 = "";
 
 function onOff() {
   if (state == "ON") {
@@ -20,7 +23,6 @@ function onOff() {
     clear();
     state = "OFF";
   } else {
-    // off.style.backgroundColor='red';
     off.innerText = "OFF";
     off.style.backgroundColor = "brown";
     display.style.backgroundColor = "aliceblue";
@@ -65,10 +67,7 @@ function calculate() {
       break;
   }
   display2.value = result;
-
   disp1 = result;
-
-  //  console.log(num1+ operator+num2)
   result = "";
 }
 
@@ -79,6 +78,9 @@ buttons.forEach(function (buttn) {
       // loop through sign checked if sign is clicked
       for (let i of signs) {
         if (value == i && num1 != "") {
+          if (operator != "" && num2 == "") {
+            newSign = "ON";
+          }
           // check if calculate has bn called, raise sign flag
           if (resFlag == "ON") {
             signFlag = "ON";
@@ -87,7 +89,6 @@ buttons.forEach(function (buttn) {
           // to exit else if condition by changing flag value
           flag = "NSET";
           operator = i;
-
           break;
         }
       }
@@ -97,16 +98,21 @@ buttons.forEach(function (buttn) {
 
         console.log(num1);
       } else if (operator !== "" && num1 != "" && flag == "NSET") {
-        display.value += value;
-
-        // console.log('NO2A'+ num2);
+        if (newSign == "ON") {
+          changeSign = display.value;
+          changeSign1 = changeSign.slice(0, -1);
+          changeSign1 += value;
+          display.value = changeSign1;
+          newSign = "OFF";
+        } else {
+          display.value += value;
+        }
         flag = "SET";
       } else {
         num2 += value;
         display.value += value;
         calculate();
         resFlag = "ON";
-        // console.log('NO3');
       }
     }
   });
